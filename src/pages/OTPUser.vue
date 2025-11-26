@@ -74,7 +74,7 @@ const inputRefs = ref([]); // Untuk manajemen fokus input
 const showSuccess = ref(false);
 
 // ENDPOINT
-const verifyOtpUrl = 'http://127.0.0.1:8000/accounts/verify-otp/';
+const verifyOtpUrl = 'http://101.50.3.105/api/accounts/verify-otp/';
 
 // ----------------------------------------------------------------------
 // LOGIC PENTING: Mengambil data saat komponen dimuat

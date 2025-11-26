@@ -220,7 +220,7 @@ const router = useRouter();
 // STATE
 // =====================
 const orders = ref([]);
-const apiUrl = "http://127.0.0.1:8000/core/registrations/";
+const apiUrl = "http://101.50.3.105/api/core/registrations/";
 
 const globalFilter = ref("");
 const pageSize = ref(10);

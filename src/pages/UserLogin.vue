@@ -117,7 +117,7 @@ onMounted(() => {
 })
 
 // ENDPOINT DJANGO
-const requestOtpUrl = 'http://127.0.0.1:8000/accounts/request-access/';
+const requestOtpUrl = 'http://101.50.3.105/api/accounts/request-access/';
 
 
 const validateNumber = (event) => {

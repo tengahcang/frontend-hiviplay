@@ -138,7 +138,7 @@ const isUpdating = ref(false)
 const successMessage = ref('')
 const errorMessage = ref('')
 
-const baseUrl = 'http://127.0.0.1:8000/core/registrations/'
+const baseUrl = 'http://101.50.3.105/api/core/registrations/'
 
 // Flatpickr refs
 const datePicker = ref(null)

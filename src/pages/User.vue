@@ -172,7 +172,7 @@ import axios from "axios";
 const router = useRouter();
 
 // API BASE
-const videoApiUrl = "http://127.0.0.1:8000/core/videos/";
+const videoApiUrl = "http://101.50.3.105/api/core/videos/";
 
 // STATE
 const videos = ref([]);
