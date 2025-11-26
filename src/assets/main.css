@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* Default font seluruh aplikasi */
+body {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+@layer base {
+  /* Heading utama pakai Montserrat (lebih profesional) */
+  h1, h2, h3 {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  /* Fallback untuk paragraf, span, anchor, list */
+  p, span, a, li {
+    font-family:"Open Sans", sans-serif;
+  }
+}
