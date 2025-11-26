@@ -153,8 +153,8 @@ const verifyOtp = async () => {
     localStorage.setItem('customerName', customerName);
 
     // 3. Bersihkan data sementara (phone number dan access code)
-    localStorage.removeItem('accessCode');
-    localStorage.removeItem('phoneNumber');
+    // localStorage.removeItem('accessCode');
+    // localStorage.removeItem('phoneNumber');
 
     showSuccess.value = true;
 
