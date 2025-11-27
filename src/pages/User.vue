@@ -172,7 +172,7 @@ import axios from "axios";
 const router = useRouter();
 
 // API BASE
-const videoApiUrl = "http://101.50.3.105/api/core/videos/";
+const videoApiUrl = "https://hiviplay.mbs-group.co.id/api/core/videos/";
 
 // STATE
 const videos = ref([]);

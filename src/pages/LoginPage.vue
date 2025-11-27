@@ -86,7 +86,7 @@ const username = ref('');
 const password = ref('');
 const loading = ref(false);
 const error = ref(null);
-const loginUrl = 'http://101.50.3.105/api/api-token-auth/'; // ⬅️ Sesuaikan URL API Django Anda
+const loginUrl = 'https://hiviplay.mbs-group.co.id/api/api-token-auth/'; // ⬅️ Sesuaikan URL API Django Anda
 
 // 2. Logic Login
 const handleLogin = async () => {

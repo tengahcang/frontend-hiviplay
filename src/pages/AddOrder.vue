@@ -138,7 +138,7 @@ const order = ref({
 const loading = ref(false)
 const successMessage = ref('')
 const errorMessage = ref('')
-const apiUrl = 'http://101.50.3.105/api/core/registrations/'
+const apiUrl = 'https://hiviplay.mbs-group.co.id/api/core/registrations/'
 
 onMounted(() => {
   flatpickr(datePicker.value, {

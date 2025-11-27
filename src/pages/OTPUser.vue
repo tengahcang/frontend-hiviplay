@@ -74,7 +74,7 @@ const inputRefs = ref([]); // Untuk manajemen fokus input
 const showSuccess = ref(false);
 
 // ENDPOINT
-const verifyOtpUrl = 'http://101.50.3.105/api/accounts/verify-otp/';
+const verifyOtpUrl = 'https://hiviplay.mbs-group.co.id/api/accounts/verify-otp/';
 
 // ----------------------------------------------------------------------
 // LOGIC PENTING: Mengambil data saat komponen dimuat

@@ -117,7 +117,7 @@ onMounted(() => {
 })
 
 // ENDPOINT DJANGO
-const requestOtpUrl = 'http://101.50.3.105/api/accounts/request-access/';
+const requestOtpUrl = 'https://hiviplay.mbs-group.co.id/api/accounts/request-access/';
 
 
 const validateNumber = (event) => {
