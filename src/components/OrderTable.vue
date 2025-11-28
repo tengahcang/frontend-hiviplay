@@ -1,38 +1,24 @@
 <template>
-  <div class="p-4 bg-white rounded-lg shadow">
-
+  <div class="p-6 rounded-xl bg-white dark:bg-[#1E1E2D] shadow-lg dark:shadow-none transition-colors duration-300">
     <!-- DELETE MODAL -->
-    <div
-      v-if="showDeleteModal"
-      class="fixed inset-0 bg-black/30 flex items-center justify-center z-50"
-    >
+    <div v-if="showDeleteModal" class="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
       <div class="bg-white p-8 rounded-3xl shadow-xl w-[90%] max-w-md text-center">
-
         <!-- Icon Warning -->
         <div class="text-red-500 text-6xl mb-4">
           <i class="fa-solid fa-triangle-exclamation"></i>
         </div>
-
         <!-- Title -->
         <h2 class="text-xl font-bold mb-2">Delete this item?</h2>
-
         <p class="text-gray-500 mb-6">
           This will permanently remove the data
         </p>
-
         <!-- Buttons -->
         <div class="flex justify-center gap-3">
-          <button
-            @click="confirmDelete"
-            class="px-4 py-2 bg-[#DC3545] hover:bg-[#B02A37] text-white rounded-lg"
-          >
+          <button @click="confirmDelete" class="px-4 py-2 bg-[#DC3545] hover:bg-[#B02A37] text-white rounded-lg">
             Delete
           </button>
-
-          <button
-            @click="showDeleteModal = false"
-            class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg"
-          >
+          <button @click="showDeleteModal = false"
+            class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg">
             Cancel
           </button>
         </div>
@@ -41,21 +27,17 @@
 
     <div class="flex flex-col gap-4 mb-4">
       <div>
-        <router-link
-          to="/admin/orders/add"
-          class="bg-[#198754] hover:bg-[#157347] text-white text-sm font-medium px-3 py-2 rounded-md flex items-center justify-center gap-2 transition-colors w-[120px]"
-        >
+        <router-link to="/admin/orders/add"
+          class="bg-[#28A428] hover:bg-[#1F8220]  dark:bg-[#92CD2D] dark:hover:bg-[#76A726] text-white dark:text-[#2A2A40] text-sm font-medium px-3 py-2 rounded-md flex items-center justify-center gap-2 transition-colors w-[120px]">
           <i class="fa-regular fa-plus"></i>
           Add New
         </router-link>
       </div>
 
       <div class="flex justify-between items-center">
-        <div class="flex items-center gap-2 text-sm text-gray-600">
-          <select
-            v-model.number="pageSize"
-            class="border border-gray-300 rounded-md px-2 py-2 text-sm focus:ring focus:ring-green-200"
-          >
+        <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
+          <select v-model.number="pageSize"
+            class="border border-gray-300 dark:border-[#333547] bg-white dark:bg-[#2A2A40] text-gray-800 dark:text-gray-200 rounded-md px-2 py-2 text-sm focus:ring focus:ring-green-200 outline-none transition-colors duration-300">
             <option :value="5">5</option>
             <option :value="10">10</option>
             <option :value="20">20</option>
@@ -66,73 +48,47 @@
           <span>entries per page</span>
         </div>
 
-        <input
-          v-model="globalFilter"
-          type="text"
-          placeholder="Search..."
-          class="w-[140px] md:w-60 border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring focus:ring-green-200"
-        />
+        <input v-model="globalFilter" type="text" placeholder="Search..."
+          class="w-[140px] md:w-80 border border-gray-300 dark:border-[#333547] bg-white dark:bg-[#2A2A40] text-gray-800 dark:text-gray-200 rounded-md px-3 py-2 text-sm focus:ring focus:ring-green-200 outline-none transition-colors duration-300" />
       </div>
     </div>
 
     <!-- TABLE -->
     <div class="overflow-x-auto">
-      <table class="min-w-full text-sm text-gray-700 border-collapse">
-        <thead class="bg-gray-50 text-gray-500 uppercase text-xs">
-          <tr class="border-b border-gray-200">
-            <th
-              v-for="header in table.getHeaderGroups()[0].headers"
-              :key="header.id"
+      <table class="min-w-full text-sm text-gray-700 dark:text-gray-300 border-collapse transition-colors duration-300">
+        <thead
+          class="bg-gray-50 dark:bg-[#151521] text-gray-500 dark:text-gray-300 uppercase text-xs transition-colors duration-300">
+          <tr class="border-b border-gray-200 dark:border-[#333547] transition-colors duration-300">
+            <th v-for="header in table.getHeaderGroups()[0].headers" :key="header.id"
               class="px-4 py-3 cursor-pointer select-none text-left whitespace-nowrap"
-              @click="header.column.getToggleSortingHandler()?.($event)"
-            >
+              @click="header.column.getToggleSortingHandler()?.($event)">
               <div class="flex items-center justify-between">
                 {{ header.column.columnDef.header }}
-
-                <span class="text-gray-400">
-                  <i
-                    v-if="header.column.getIsSorted() === 'asc'"
-                    class="fa-solid fa-sort-up"
-                  ></i>
-                  <i
-                    v-else-if="header.column.getIsSorted() === 'desc'"
-                    class="fa-solid fa-sort-down"
-                  ></i>
-                  <i v-else class="fa-solid fa-sort text-gray-300"></i>
+                <span class="text-gray-400 dark:text-gray-500 transition-colors duration-300">
+                  <i v-if="header.column.getIsSorted() === 'asc'" class="fa-solid fa-sort-up"></i>
+                  <i v-else-if="header.column.getIsSorted() === 'desc'" class="fa-solid fa-sort-down"></i>
+                  <i v-else class="fa-solid fa-sort text-gray-300 dark:text-gray-600"></i>
                 </span>
               </div>
             </th>
           </tr>
         </thead>
-
         <tbody>
-          <tr
-            v-for="row in table.getRowModel().rows"
-            :key="row.id"
-            class="border-b border-gray-200 odd:bg-white even:bg-slate-50"
-          >
-            <td
-              v-for="cell in row.getVisibleCells()"
-              :key="cell.id"
-              class="px-4 py-3 text-gray-800 whitespace-nowrap"
-            >
+          <tr v-for="row in table.getRowModel().rows" :key="row.id"
+            class="bborder-b border-gray-200 dark:border-[#333547] odd:bg-white even:bg-slate-50 dark:odd:bg-[#1E1E2D] dark:even:bg-[#151521] transition-colors duration-300">
+            <td v-for="cell in row.getVisibleCells()" :key="cell.id"
+              class="px-4 py-3 text-gray-800 dark:text-gray-200 whitespace-nowrap transition-colors duration-300">
               <span v-if="cell.column.id !== 'action'">
                 {{ cell.getValue() }}
               </span>
-
               <div v-else class="flex justify-center gap-2">
-                <router-link
-                  :to="{ name: 'edit-order', query: { id: row.original.id } }"
-                  class="bg-[#435EBE] hover:bg-[#3348A0] text-white text-xs font-medium px-3 py-1.5 rounded-md transition-colors inline-flex items-center gap-1"
-                >
+                <router-link :to="{ name: 'edit-order', query: { id: row.original.id } }"
+                  class="bg-[#28A428] hover:bg-[#1F8220]  dark:bg-[#92CD2D] dark:hover:bg-[#76A726] text-white  dark:text-[#2A2A40] text-xs font-medium px-3 py-1.5 rounded-md transition-colors inline-flex items-center gap-1">
                   <i class="fa-regular fa-pen-to-square"></i>
                   Edit
                 </router-link>
-
-                <button
-                  @click="handleDelete(row.original.id)"
-                  class="bg-[#DC3545] hover:bg-[#B02A37] text-white text-xs font-medium px-3 py-1.5 rounded-md transition-colors inline-flex items-center gap-1"
-                >
+                <button @click="handleDelete(row.original.id)"
+                  class="bg-[#DC3545] hover:bg-[#B02A37] text-white text-xs font-medium px-3 py-1.5 rounded-md transition-colors inline-flex items-center gap-1">
                   <i class="fa-regular fa-trash-can"></i>
                   Delete
                 </button>
@@ -142,9 +98,9 @@
         </tbody>
       </table>
     </div>
-
     <!-- FOOTER -->
-    <div class="flex flex-col md:flex-row flex-wrap justify-between items-center mt-4 text-sm text-gray-600 gap-2">
+    <div
+      class="flex flex-col md:flex-row flex-wrap justify-between items-center mt-4 text-sm text-gray-600 dark:text-gray-300 gap-2 transition-colors duration-300">
       <div class="text-xs md:text-sm whitespace-nowrap">
         Showing
         <span class="font-medium">{{ startEntry }}</span>
@@ -154,35 +110,23 @@
         <span class="font-medium">{{ table.getFilteredRowModel().rows.length }}</span>
         entries
       </div>
-
       <div class="flex items-center gap-1">
-        <button
-          @click="table.previousPage()"
-          :disabled="!table.getCanPreviousPage()"
-          class="px-3 py-1 rounded-lg disabled:opacity-50 hover:bg-gray-100"
-        >
+        <button @click="table.previousPage()" :disabled="!table.getCanPreviousPage()"
+          class="px-3 py-1 rounded-lg disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-[#333547] transition-colors duration-300">
           ‹
         </button>
 
-        <button
-          v-for="page in pages"
-          :key="page"
-          @click="table.setPageIndex(page - 1)"
-          :class="[
-            'px-3 py-1 rounded-lg cursor-pointer',
-            page === table.getState().pagination.pageIndex + 1
-              ? 'bg-[#435EBE] text-white'
-              : 'text-gray-700 hover:bg-gray-100'
-          ]"
-        >
+        <button v-for="page in pages" :key="page" @click="table.setPageIndex(page - 1)" :class="[
+          'px-3 py-1 rounded-lg cursor-pointer',
+          page === table.getState().pagination.pageIndex + 1
+            ? 'bg-[#28A428] hover:bg-[#1F8220]  dark:bg-[#92CD2D] dark:hover:bg-[#76A726] text-white  dark:text-[#2A2A40]'
+            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#333547]'
+        ]">
           {{ page }}
         </button>
 
-        <button
-          @click="table.nextPage()"
-          :disabled="!table.getCanNextPage()"
-          class="px-3 py-1 rounded-lg disabled:opacity-50 hover:bg-gray-100"
-        >
+        <button @click="table.nextPage()" :disabled="!table.getCanNextPage()"
+          class="px-3 py-1 rounded-lg disabled:opacity-50 hover:bg-gray-100">
           ›
         </button>
       </div>
@@ -190,54 +134,32 @@
   </div>
 </template>
 
-
-
 <script setup>
-import {
-  createColumnHelper,
-  getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  getFilteredRowModel,
-  useVueTable
-} from "@tanstack/vue-table";
-
+import { createColumnHelper, getCoreRowModel, getPaginationRowModel, getSortedRowModel, getFilteredRowModel, useVueTable } from "@tanstack/vue-table";
 import axios from "axios";
 import { ref, computed, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
-
 function globalContainsFilter(row, columnId, filterValue) {
   const value = row.getValue(columnId);
   if (!value) return false;
   return String(value).toLowerCase().includes(String(filterValue).toLowerCase());
 }
 
-
-
 const router = useRouter();
-
-// =====================
-// STATE
-// =====================
 const orders = ref([]);
 const apiUrl = "https://hiviplay.mbs-group.co.id/api/core/registrations/";
-
 const globalFilter = ref("");
 const pageSize = ref(10);
 const sorting = ref([]);
 const pagination = ref({ pageIndex: 0, pageSize: 10 });
-
 const error = ref(null);
-
 const showDeleteModal = ref(false)
 const deleteId = ref(null)
-
 // =====================
 // FETCH FROM DJANGO API
 // =====================
 async function fetchOrders() {
   const token = localStorage.getItem("userToken");
-
   if (!token) {
     router.push("/admin/login");
     return;
@@ -354,10 +276,10 @@ const table = useVueTable({
     get pagination() { return pagination.value },
   },
 
-filterFns: {
-  contains: globalContainsFilter,
-},
-globalFilterFn: "contains",
+  filterFns: {
+    contains: globalContainsFilter,
+  },
+  globalFilterFn: "contains",
 
 
 
